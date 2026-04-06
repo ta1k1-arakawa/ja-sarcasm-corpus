@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 # =============================
 load_dotenv()  # read .env if present
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash-lite")
 OUT_PATH = os.getenv("OUT_PATH", "situations.jsonl")
 
 assert GOOGLE_API_KEY, "❌ GOOGLE_API_KEY が .env に設定されていません。"
