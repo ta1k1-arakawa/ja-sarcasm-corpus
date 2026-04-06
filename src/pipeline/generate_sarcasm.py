@@ -23,6 +23,7 @@ from config import (
     get_gemini_model,
     read_jsonl,
     setup_logger,
+    MATERIAL_DIR,
 )
 from schemas import (
     FinalRecord,
@@ -37,8 +38,8 @@ logger = setup_logger(__name__)
 # =============================
 # 設定
 # =============================
-INPUT_PATH = os.getenv("INPUT_PATH", "situations.jsonl")
-OUT_PATH = os.getenv("OUT_PATH", "sarcasm_dataset.jsonl")
+INPUT_PATH = os.getenv("INPUT_PATH", str(MATERIAL_DIR / "situations.jsonl"))
+OUT_PATH = os.getenv("OUT_PATH", str(MATERIAL_DIR / "sarcasm_dataset.jsonl"))
 
 # =============================
 # Gemini モデル初期化

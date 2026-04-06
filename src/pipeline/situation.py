@@ -25,6 +25,7 @@ from config import (
     get_dialogue_files,
     get_gemini_model,
     setup_logger,
+    MATERIAL_DIR,
 )
 from schemas import Situation, SituationRecord
 
@@ -35,7 +36,7 @@ logger = setup_logger(__name__)
 # =============================
 START_INDEX = 501
 END_INDEX = 1200
-OUT_PATH = os.getenv("OUT_PATH", "situations.jsonl")
+OUT_PATH = os.getenv("OUT_PATH", str(MATERIAL_DIR / "situations.jsonl"))
 
 # =============================
 # Gemini モデル初期化

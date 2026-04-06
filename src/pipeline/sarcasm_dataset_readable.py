@@ -10,15 +10,15 @@ import sys
 # src/ を Python パスに追加
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from config import read_jsonl, setup_logger
+from config import read_jsonl, setup_logger, MATERIAL_DIR
 
 logger = setup_logger(__name__)
 
 # =============================
 # 設定
 # =============================
-INPUT_FILE = os.getenv("READABLE_INPUT", "sarcasm_dataset.jsonl")
-OUTPUT_FILE = os.getenv("READABLE_OUTPUT", "sarcasm_dataset_readable.txt")
+INPUT_FILE = os.getenv("READABLE_INPUT", str(MATERIAL_DIR / "sarcasm_dataset.jsonl"))
+OUTPUT_FILE = os.getenv("READABLE_OUTPUT", str(MATERIAL_DIR / "sarcasm_dataset_readable.txt"))
 
 
 def main():

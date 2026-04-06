@@ -35,7 +35,7 @@
 ## 🏗️ データ構築パイプライン
 
 本コーパスは以下の3ステップで自動構築されます。  
-パイプライン全体は `make-sarcasm/measure.py` で一括実行できます。
+パイプライン全体は `src/pipeline/measure.py` で一括実行できます。
 
 ```
 raw/dialogues/           src/pipeline/
@@ -66,8 +66,8 @@ raw/dialogues/           src/pipeline/
 `raw/dialogues/` 内の雑談対話JSONファイルから、Gemini APIを用いて対話の **主題（theme）** と **状況サマリ（summary）** を抽出します。  
 同時に各話者の文体（敬体 / 常体）を自動判定します。
 
-**入力**: `dialogues/XXXXX.json`（雑談対話JSON）  
-**出力**: `situations.jsonl`
+**入力**: `raw/dialogues/XXXXX.json`（雑談対話JSON）  
+**出力**: `raw/material/situations.jsonl`
 
 ```json
 {
@@ -90,8 +90,8 @@ Step 1 で抽出した状況情報をもとに、Gemini APIで皮肉を含む新
 2. 対話の流れに対する皮肉の説明を生成
 3. 皮肉な応答を生成
 
-**入力**: `situations.jsonl`  
-**出力**: `sarcasm_dataset.jsonl`
+**入力**: `raw/material/situations.jsonl`  
+**出力**: `raw/material/sarcasm_dataset.jsonl`
 
 ```json
 {
@@ -119,8 +119,8 @@ Step 1 で抽出した状況情報をもとに、Gemini APIで皮肉を含む新
 
 生成されたJSONLデータを、人間が確認・アノテーションしやすいテキスト形式に変換します。
 
-**入力**: `sarcasm_dataset.jsonl`  
-**出力**: `sarcasm_dataset_readable.txt`
+**入力**: `raw/material/sarcasm_dataset.jsonl`  
+**出力**: `raw/material/sarcasm_dataset_readable.txt`
 
 ```
 ==================== [ID: 501] ====================
